@@ -8,6 +8,7 @@ public class Player {
 	public final Team team;
 	public final King king;
 	public List<Piece> pieces;
+	public List<Move> possibleMoves;
 	public List<Move> validMoves;
 	
 	
@@ -16,6 +17,19 @@ public class Player {
 		this.king = king;
 	}
 	
+	public boolean inCheck(Board b, Move m) {
+		//TODO implement method
+		return false;
+	}
+	
+	public void validateMoves(Board b) {
+		for(Move m: possibleMoves) {
+			if(!inCheck(b, m)) {
+				validMoves.add(m);
+			}
+		}
+		
+	}
 	
 	public void getPieces(Board b){
 		
@@ -36,6 +50,10 @@ public class Player {
 			}
 		}
 		this.pieces = pieces;
+		//clear the possible moves and valid moves
+		possibleMoves.clear();
+		validMoves.clear();
+		
 	}
 	
 	

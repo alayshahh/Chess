@@ -9,20 +9,6 @@ import java.util.List;
  */
 public class Player {
 	
-	public List<Piece> getPieces() {
-		return pieces;
-	}
-
-	public List<Move> getPossibleMoves() {
-		return possibleMoves;
-	}
-
-	/**
-	 * @return
-	 */
-	public List<Move> getValidMoves() {
-		return validMoves;
-	}
 
 	/**
 	 * @return
@@ -45,16 +31,24 @@ public class Player {
 	
 	/**
 	 * @param b
-	 * @param m
-	 * @return if King is in check because of the move
+	 * @param m takes in a move
+	 * @return if King is in check because of the move, then it will return true.
 	 */
 	public boolean inCheck(Board b, Move m) {
 		//TODO implement method
 		return false;
 	}
 	
+	public void getPossibleMoves(Board b) {
+		possibleMoves.clear();
+		for(Piece p: pieces) {
+			possibleMoves.addAll(p.allPossibleMoves(b));
+		}
+	}
+	
 	/**
 	 * @param b
+	 * 
 	 */
 	public void validateMoves(Board b) {
 		for(Move m: possibleMoves) {
@@ -68,7 +62,7 @@ public class Player {
 	/**
 	 * @param b
 	 */
-	public void getPiecesFromBoard(Board b){
+	public void getPieces(Board b){
 
 		List<Piece> pieces = new ArrayList<>();
 

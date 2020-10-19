@@ -1,5 +1,10 @@
 package chess;
 
+/**
+ * @author Alay Shah & Anshika Khare
+*/
+
+
 public class Pawn extends Piece {
 
 	@Override

@@ -1,5 +1,9 @@
 package chess;
 
+/**
+ * @author Alay Shah & Anshika Khare
+*/
+
 public class King extends Piece {
 	
 	

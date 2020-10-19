@@ -1,5 +1,10 @@
 package chess;
 
+/**
+ * @author Alay Shah & Anshika Khare
+
+*/
+
 public abstract class Piece {
 		public Location curLoc;
 		public Location prevLoc;

@@ -4,11 +4,16 @@ package chess;
  * @author Alay Shah & Anshika Khare
 */
 public class Board {
-	public Piece[][] board  = new Piece [8] [8];
+	public Piece[][] board;
 	
 	
+	public Board() {
+		board = new Piece [8][8];
+	}
 	
-	
+	public Board(Piece [][] board) {
+		this.board = board;
+	}
 	
 	public void printBoard() {
 		for( int i = 7; i>=0; i--) {

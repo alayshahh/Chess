@@ -8,11 +8,9 @@ import java.util.List;
 
 public class Rook extends Piece{
 	
-	boolean hasMoved;
 
 	public Rook(Team team, Location curLoc) {
 		super(PieceType.ROOK, team, curLoc);
-		hasMoved = true;
 		// TODO Auto-generated constructor stub
 	}
 

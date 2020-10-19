@@ -7,6 +7,22 @@ import java.util.*;
 */
 
 public abstract class Piece {
+	
+	public Location curLoc;
+	//public Location prevLoc;
+	public PieceType type;
+	public final Team team;
+	public boolean hasMoved;
+	
+	public Piece(PieceType type, Team team, Location curLoc) {
+		this.type = type;
+		this.team = team;
+		this.curLoc = curLoc;
+		hasMoved = false;
+		
+	}
+	
+
 
 	public Location getCurLoc() {
 		return curLoc;
@@ -24,17 +40,6 @@ public abstract class Piece {
 		return team;
 	}
 
-	public Location curLoc;
-	//public Location prevLoc;
-	public PieceType type;
-	public final Team team;
-
-	public Piece(PieceType type, Team team, Location curLoc) {
-		this.type = type;
-		this.team = team;
-		this.curLoc = curLoc;
-	}
-	
 	public abstract List<Move> allPossibleMoves(Board gameBoard);
 
 

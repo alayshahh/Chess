@@ -8,11 +8,8 @@ import java.util.List;
 
 public class King extends Piece {
 	
-	boolean hasMoved;
-	
 	public King(Team team, Location curLoc) {
 		super(PieceType.KING, team, curLoc);
-		hasMoved = false;
 	}
 
 	@Override

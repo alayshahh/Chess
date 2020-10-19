@@ -10,14 +10,11 @@ import java.util.List;
 public class Pawn extends Piece {
 	
 	
-
-
-	boolean hasMoved; //will help for enPassant and for the init double move
+	boolean lastMoveDouble;
 	
 	public Pawn(Team team, Location curLoc) {
 		super(PieceType.PAWN, team, curLoc);
-		hasMoved = false;
-		
+		lastMoveDouble = false;
 	}
 	
 

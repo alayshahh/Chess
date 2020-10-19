@@ -72,8 +72,8 @@ public class Chess {
 		gameBoard.board[bQ.getRank()][bQ.getFile()] = bQ;
 		Queen wQ = new Queen(Team.WHITE, new Location("d1"));
 		gameBoard.board[wQ.getRank()][wQ.getFile()] = wQ;
-		white.getPiecesFromBoard(gameBoard);
-		black.getPiecesFromBoard(gameBoard);
+		white.getPieces(gameBoard);
+		black.getPieces(gameBoard);
 		
 		
 

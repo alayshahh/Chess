@@ -28,8 +28,11 @@ public abstract class Piece {
 		return curLoc;
 	}
 
-	public void setCurLoc(Location curLoc) {
-		this.curLoc = curLoc;
+	public int getRank() {
+		return getCurLoc().getRank();
+	}
+	public int getFile(){
+		return getCurLoc().getFile();
 	}
 
 	public PieceType getType() {

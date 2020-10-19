@@ -46,4 +46,8 @@ public class Location {
 	public void locationOnBoard() {
 		System.out.println(rank+ " "+ file);
 	}
+	
+	public String toString() {
+		return ""+ rank+" "+ file;
+	}
 }

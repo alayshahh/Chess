@@ -53,6 +53,7 @@ public class Location {
 	}
 	
 	public String toString() {
-		return ""+ rank+" "+ file;
+		char x = (char)(file +97);
+		return x+" " + (rank+1);
 	}
 }

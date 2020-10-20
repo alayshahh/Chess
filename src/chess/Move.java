@@ -39,6 +39,10 @@ public class Move {
 		other  = new Move (enPassant, null);
 		type = MoveType.ENPASSANT;
 	}
+	public Move(Location cur, Location next, MoveType type) {
+		this(cur, next);
+		this.type = type;
+	}
 	
 	@Override
 	public boolean equals (Object o) {

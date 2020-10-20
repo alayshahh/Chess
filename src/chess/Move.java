@@ -49,4 +49,8 @@ public class Move {
 		return cur.equals(m.cur) && next.equals(m.next);
 		
 	}
+	
+	public String toString() {
+		return type +" "+ cur+ " | " + next;
+	}
 }

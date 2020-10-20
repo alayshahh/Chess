@@ -19,6 +19,11 @@ public class Location {
 		this.rank=r-49;
 	}
 	
+	public Location (int rank, int file) {
+		this.rank = rank;
+		this.file =file;
+	}
+	
 	
 	/**
 	 * @return rank

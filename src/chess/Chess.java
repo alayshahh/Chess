@@ -13,8 +13,9 @@ public class Chess {
 	public static void main(String [] args) {
 		initGame();
 		gameBoard.printBoard();
-		Team turn = Team.WHITE;
+		boolean whiteTurn = true;
 		boolean gameOn = true;
+		
 		//implement rest
 	}
 	

@@ -67,24 +67,24 @@ public class Knight extends Piece {
 		
 		if (twoUp) {
 			if(left) {
-				if(board[rank+1][file-3]==null||board[rank+1][file-1].team==opponent) { //up left
+				if(board[rank+2][file-1]==null||board[rank+1][file-1].team==opponent) { //up left
 					moves.add(new Move(curLoc, new Location(rank+1, file-1)));
 				}
 			}
 			if(right) {
-				if(board[rank+1][file+3]==null||board[rank+1][file+1].team==opponent) { //up right
+				if(board[rank+2][file+1]==null||board[rank+1][file+1].team==opponent) { //up right
 					moves.add(new Move(curLoc, new Location(rank+1, file+1)));
 				}
 			}
 		}
 		if (twoDown) {
 			if(left) {
-				if(board[rank-1][file-3]==null||board[rank-1][file-1].team==opponent) { //down left
+				if(board[rank-2][file-1]==null||board[rank-1][file-1].team==opponent) { //down left
 					moves.add(new Move(curLoc, new Location(rank-1, file-1)));
 				}
 			}
 			if(right) {
-				if(board[rank-1][file+3]==null||board[rank-1][file+1].team==opponent) { //down right
+				if(board[rank-2][file+1]==null||board[rank-1][file+1].team==opponent) { //down right
 					moves.add(new Move(curLoc, new Location(rank-1, file+1)));
 				}
 			}

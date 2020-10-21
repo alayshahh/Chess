@@ -40,24 +40,24 @@ public class Bishop extends Piece {
 		boolean left = file -1> -1;
 		boolean right = file+1< 8;
 		if (up) {
-			if(right) {
+			if(left) {
 				if(board[rank+1][file-1]==null||board[rank+1][file-1].team==opponent) { //upright
 					moves.add(new Move(curLoc, new Location(rank+1, file-1)));
 				}
 			}
-			if(left) {
+			if(right) {
 				if(board[rank+1][file+1]==null||board[rank+1][file+1].team==opponent) { //upleft
 					moves.add(new Move(curLoc, new Location(rank+1, file+1)));
 				}
 			}
 		}
 		if (down) {
-			if(right) {
+			if(left) {
 				if(board[rank-1][file-1]==null||board[rank-1][file-1].team==opponent) { //down right
 					moves.add(new Move(curLoc, new Location(rank-1, file-1)));
 				}
 			}
-			if(left) {
+			if(right) {
 				if(board[rank-1][file+1]==null||board[rank-1][file+1].team==opponent) { //down left
 					moves.add(new Move(curLoc, new Location(rank-1, file+1)));
 				}

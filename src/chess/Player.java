@@ -29,16 +29,6 @@ public class Player {
 		this.king = king;
 	}
 	
-	/**
-	 * @param b
-	 * @param m takes in a move
-	 * @return if King is in check because of the move, then it will return true.
-	 */
-	public boolean inCheck(Board b, Move m) {
-		//TODO implement method
-		return false;
-	}
-	
 	public void getPossibleMoves(Board b) {
 		possibleMoves.clear();
 		for(Piece p: pieces) {
@@ -51,8 +41,19 @@ public class Player {
 	 * 
 	 */
 	public void validateMoves(Board b) {
+		
 		for(Move m: possibleMoves) {
-			if(!inCheck(b, m)) {
+			Piece [][] board = b.board.clone();
+			board[m.next.getRank()][m.next.getFile()] = board[m.cur.getRank()][m.cur.getFile()];
+			board[m.cur.getRank()][m.cur.getFile()] = null;
+			if(m.type==MoveType.ENPASSANT) {
+				board[m.other.cur.getRank()][m.other.cur.getFile()] = null;
+			}
+			if(m.type==MoveType.CASTLING) {
+				board[m.other.next.getRank()][m.other.next.getFile()]= board[m.other.cur.getRank()][m.other.cur.getFile()];
+				board[m.other.cur.getRank()][m.other.cur.getFile()] = null;
+			}
+			if(!inCheck(board, m.next)) {
 				validMoves.add(m);
 			}
 		}
@@ -89,6 +90,100 @@ public class Player {
 		validMoves.clear();
 
 	}
+	
+	/**
+	 * @param b
+	 * @param m takes in a move
+	 * @return if King is in check because of the move, then it will return true.
+	 */
+	public boolean inCheck(Piece[][] b, Location next) {
+		Team op;
+		op = team==Team.WHITE? Team.BLACK : Team.WHITE;
+		Location kingLoc;
+		if(b[next.getRank()][next.getRank()].type == PieceType.KING && b[next.getRank()][next.getFile()].team == team) {
+			kingLoc = next;
+		} else kingLoc = king.curLoc;
+		int rnk = kingLoc.getRank();
+		int fle = kingLoc.getRank();
+		
+		
+		//check up for rook & Queen && check for king on the first square up
+		for (int i =rnk+1; i<8; i++) {
+			if(b[i][fle]!=null) {
+				if(b[i][fle].team==op) {
+					if(i==rnk+1 && b[i][fle].type==PieceType.KING) {
+						return true;
+					}
+					if(b[i][fle].type==PieceType.QUEEN||b[i][fle].type==PieceType.ROOK) {
+						return true;
+					}
+				}else break; //same team
+			}
+		}
+		
+		//check down for rook and Queen && check for king on the first square down
+		for(int i = rnk-1; i>-1; i--) {
+			if(b[i][fle]!=null) {
+				if(b[i][fle].team==op) {
+					if(i==rnk-1 && b[i][fle].type==PieceType.KING) {
+						return true;
+					}
+					if(b[i][fle].type==PieceType.QUEEN||b[i][fle].type==PieceType.ROOK) {
+						return true;
+					}
+				}else break; //same team
+			}
+		}
+		//check right for rook and Queen && check for king on the first square right
+		for(int i = fle+1; i<8; i++) {
+			if(b[rnk][i]!=null) {
+				if(b[rnk][i].team==op) {
+					if(i==fle+1 && b[rnk][i].type==PieceType.KING) {
+						return true;
+					}
+					if(b[rnk][i].type==PieceType.QUEEN||b[rnk][i].type == PieceType.ROOK) {
+						return true;
+					}
+					
+				}else break;
+			}
+		}
+		//check left for rook and Queen && check for king on the first square left
+		for(int i = fle-1; i>-1; i--) {
+			if(b[rnk][i]!=null) {
+				if(b[rnk][i].team==op) {
+					if(i==fle-1 && b[rnk][i].type==PieceType.KING) {
+						return true;
+					}
+					if(b[rnk][i].type==PieceType.QUEEN||b[rnk][i].type == PieceType.ROOK) {
+						return true;
+					}
+					
+				}else break;
+			}
+		}
+		
+		//check up left
+		//check up rihgt
+		//check down left
+		//check down right
+		//check 
+			
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		return false;
+	}
+	
+	
 	
 	
 

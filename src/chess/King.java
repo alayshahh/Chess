@@ -19,8 +19,6 @@ public class King extends Piece {
 		return team == Team.BLACK ? "bK" : "wK";
 	}
 
-
-
 	@Override
 	public List<Move> allPossibleMoves( Board gameBoard) {
 		// TODO Auto-generated method stub

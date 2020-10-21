@@ -33,9 +33,39 @@ public class Knight extends Piece {
 		int file = getFile();
 		boolean up = rank+1<8;
 		boolean down = rank-1 > -1;
+		boolean twoLeft = file -3> -1;
+		boolean twoRight = file+3< 8;
+		
+		boolean twoUp = rank+3<8;
+		boolean twoDown = rank-3 > -1;
 		boolean left = file -1> -1;
 		boolean right = file+1< 8;
 		if (up) {
+			if(twoLeft) {
+				if(board[rank+1][file-3]==null||board[rank+1][file-1].team==opponent) { //up left
+					moves.add(new Move(curLoc, new Location(rank+1, file-1)));
+				}
+			}
+			if(twoRight) {
+				if(board[rank+1][file+3]==null||board[rank+1][file+1].team==opponent) { //up right
+					moves.add(new Move(curLoc, new Location(rank+1, file+1)));
+				}
+			}
+		}
+		if (down) {
+			if(twoLeft) {
+				if(board[rank-1][file-3]==null||board[rank-1][file-1].team==opponent) { //down left
+					moves.add(new Move(curLoc, new Location(rank-1, file-1)));
+				}
+			}
+			if(twoRight) {
+				if(board[rank-1][file+3]==null||board[rank-1][file+1].team==opponent) { //down right
+					moves.add(new Move(curLoc, new Location(rank-1, file+1)));
+				}
+			}
+		}
+		
+		if (twoUp) {
 			if(left) {
 				if(board[rank+1][file-3]==null||board[rank+1][file-1].team==opponent) { //up left
 					moves.add(new Move(curLoc, new Location(rank+1, file-1)));
@@ -47,7 +77,7 @@ public class Knight extends Piece {
 				}
 			}
 		}
-		if (down) {
+		if (twoDown) {
 			if(left) {
 				if(board[rank-1][file-3]==null||board[rank-1][file-1].team==opponent) { //down left
 					moves.add(new Move(curLoc, new Location(rank-1, file-1)));

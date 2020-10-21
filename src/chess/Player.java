@@ -163,22 +163,87 @@ public class Player {
 			}
 		}
 		
+		
+		//check up right
+		for( int i = rnk+1, j = fle +1; i<8 && j<8; i++, j++) {
+			if(b[i][j]!=null) {
+				if(b[i][j].team==op) {
+					if(i==rnk+1 && j == fle+1 && b[i][j].type==PieceType.KING) {
+						return true;
+					}
+					if(b[i][j].type==PieceType.QUEEN||b[i][j].type==PieceType.BISHOP) {
+						return true;
+					}
+				}else break;
+			}
+		}
 		//check up left
-		//check up rihgt
-		//check down left
+		for( int i = rnk+1, j = fle -1; i<8 && j>-1; i++, j--) {
+			if(b[i][j]!=null) {
+				if(b[i][j].team==op) {
+					if(i==rnk+1 && j == fle-1 && b[i][j].type==PieceType.KING) {
+						return true;
+					}
+					if(b[i][j].type==PieceType.QUEEN||b[i][j].type==PieceType.BISHOP) {
+						return true;
+					}
+				}else break;
+			}
+		}
 		//check down right
-		//check 
-			
+		for( int i = rnk-1, j = fle +1; i>-1 && j<8; i--, j++) {
+			if(b[i][j]!=null) {
+				if(b[i][j].team==op) {
+					if(i==rnk-1 && j == fle+1 && b[i][j].type==PieceType.KING) {
+						return true;
+					}
+					if(b[i][j].type==PieceType.QUEEN||b[i][j].type==PieceType.BISHOP) {
+						return true;
+					}
+				}else break;
+			}
+		}
+		//check down left
+		for( int i = rnk-1, j = fle -1; i>-1 && j>-1; i--, j--) {
+			if(b[i][j]!=null) {
+				if(b[i][j].team==op) {
+					if(i==rnk-1 && j == fle-1 && b[i][j].type==PieceType.KING) {
+						return true;
+					}
+					if(b[i][j].type==PieceType.QUEEN||b[i][j].type==PieceType.BISHOP) {
+						return true;
+					}
+				}else break;
+			}
+		}
 		
+		//check knight -> 8 postions
 		
+		int [] [] knightPos = {{rnk+1, fle+2},{rnk+2,fle+1},{rnk-2, fle+1}, {rnk-1, fle+2},{rnk-2, fle-1}, {rnk-1,fle-2}, {rnk+1,fle-2}, {rnk+2,fle-1}};
+		for( int [] loc: knightPos) {
+			if(loc[0]>-1 && loc[0]<8 && loc[1]>-1 && loc[1]<8) {
+				if(b[loc[0]][loc[1]]!=null && b[loc[0]][loc[1]].team==op&& b[loc[0]][loc[1]].type==PieceType.KNIGHT) {
+					return true;
+				}
+			}
+		}
 		
-		
-		
-		
-		
-		
-		
-		
+		//check pawn -> done by team
+		int [] [] pwnPos = {{rnk,fle-1},{rnk,fle+1}};
+		if(team==Team.WHITE) { //pawns will have a higher rank because they can only move up
+			pwnPos[0][0]++; 
+			pwnPos[1][0]++;
+		}else {
+			pwnPos[0][0]--; //pawns will have a lower rank bc they can only move up
+			pwnPos[1][0]--;
+		}
+		for(int [] loc: pwnPos) {
+			if(loc[0]>-1 && loc[0]<8 && loc[1]>-1 && loc[1]<8) {
+				if(b[loc[0]][loc[1]]!=null && b[loc[0]][loc[1]].team==op&& b[loc[0]][loc[1]].type==PieceType.PAWN) {
+					return true;
+				}
+			}
+		}
 		
 		return false;
 	}

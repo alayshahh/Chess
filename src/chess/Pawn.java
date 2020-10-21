@@ -81,9 +81,9 @@ public class Pawn extends Piece {
 
 			}
 		}
-		for (Move m: moves) {
-			System.out.println(m);
-		}
+//		for (Move m: moves) {
+//			System.out.println(m);
+//		}
 
 		return moves;
 	}
@@ -133,9 +133,9 @@ public class Pawn extends Piece {
 				}
 			}
 		}
-		for (Move m: moves) {
-			System.out.println(m);
-		}
+//		for (Move m: moves) {
+//			System.out.println(m);
+//		}
 
 		return moves;
 	}

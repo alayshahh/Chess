@@ -29,7 +29,12 @@ public class Player {
 		this.king = king;
 	}
 	
-	public void getPossibleMoves(Board b) {
+	public List<Move> getMoves(){
+		return validMoves;
+		
+	}
+	
+	private void getPossibleMoves(Board b) {
 		possibleMoves.clear();
 		for(Piece p: pieces) {
 			possibleMoves.addAll(p.allPossibleMoves(b));
@@ -40,8 +45,8 @@ public class Player {
 	 * @param b
 	 * 
 	 */
-	public void validateMoves(Board b) {
-		
+	public void getValidMoves(Board b) {
+		getPossibleMoves(b);
 		for(Move m: possibleMoves) {
 			Piece [][] board = b.board.clone();
 			board[m.next.getRank()][m.next.getFile()] = board[m.cur.getRank()][m.cur.getFile()];
@@ -103,7 +108,10 @@ public class Player {
 		Team op;
 		op = team==Team.WHITE? Team.BLACK : Team.WHITE;
 		Location kingLoc;
-		if(b[next.getRank()][next.getRank()].type == PieceType.KING && b[next.getRank()][next.getFile()].team == team) {
+		if(next==null) {
+			kingLoc = king.curLoc;
+		}
+		if(b[next.getRank()][next.getRank()]!=null && b[next.getRank()][next.getRank()].type == PieceType.KING && b[next.getRank()][next.getFile()].team == team) {
 			kingLoc = next;
 		} else kingLoc = king.curLoc;
 		int rnk = kingLoc.getRank();

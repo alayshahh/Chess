@@ -46,8 +46,11 @@ public class Player {
 			Piece [][] board = b.board.clone();
 			board[m.next.getRank()][m.next.getFile()] = board[m.cur.getRank()][m.cur.getFile()];
 			board[m.cur.getRank()][m.cur.getFile()] = null;
-			if(m.type==MoveType.ENPASSANT) {
-				board[m.other.cur.getRank()][m.other.cur.getFile()] = null;
+			
+			//dont need to check for promotion or doublemove bc they will not capture a piece or move another piece to block the king
+			
+			if(m.type==MoveType.ENPASSANT) { 
+				board[m.other.cur.getRank()][m.other.cur.getFile()] = null; 
 			}
 			if(m.type==MoveType.CASTLING) {
 				board[m.other.next.getRank()][m.other.next.getFile()]= board[m.other.cur.getRank()][m.other.cur.getFile()];
@@ -222,7 +225,7 @@ public class Player {
 		int [] [] knightPos = {{rnk+1, fle+2},{rnk+2,fle+1},{rnk-2, fle+1}, {rnk-1, fle+2},{rnk-2, fle-1}, {rnk-1,fle-2}, {rnk+1,fle-2}, {rnk+2,fle-1}};
 		for( int [] loc: knightPos) {
 			if(loc[0]>-1 && loc[0]<8 && loc[1]>-1 && loc[1]<8) {
-				if(b[loc[0]][loc[1]]!=null && b[loc[0]][loc[1]].team==op&& b[loc[0]][loc[1]].type==PieceType.KNIGHT) {
+				if(b[loc[0]][loc[1]]!=null && b[loc[0]][loc[1]].team==op && b[loc[0]][loc[1]].type==PieceType.KNIGHT) {
 					return true;
 				}
 			}
@@ -239,7 +242,7 @@ public class Player {
 		}
 		for(int [] loc: pwnPos) {
 			if(loc[0]>-1 && loc[0]<8 && loc[1]>-1 && loc[1]<8) {
-				if(b[loc[0]][loc[1]]!=null && b[loc[0]][loc[1]].team==op&& b[loc[0]][loc[1]].type==PieceType.PAWN) {
+				if(b[loc[0]][loc[1]]!=null && b[loc[0]][loc[1]].team==op && b[loc[0]][loc[1]].type==PieceType.PAWN) {
 					return true;
 				}
 			}

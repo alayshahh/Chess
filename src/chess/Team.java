@@ -6,5 +6,13 @@ package chess;
 */
 
 public enum Team {
-	WHITE, BLACK;
+	WHITE("White"), BLACK("Black");
+	private String name;
+	private Team(String name) {
+		this.name = name;
+	}
+	
+	public String toString() {
+		return name;
+	}
 }

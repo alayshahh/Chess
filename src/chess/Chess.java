@@ -33,34 +33,37 @@ public class Chess {
 
 			System.out.print(turn+"'s move: ");
 			String [] input = getMove();
-			System.out.println();
-
 			if(input.length<1||input.length>3) { //empty move or more than 2 spaces in input
-				System.out.println("Illegal move, try again \n");
+				System.out.println("Illegal move, try again.");
 				continue;
 			}
 
 			if(input.length==1) { //can be draw confirmation or resign
 				if(input[0].equals("draw")){
-					System.out.println("draw");
+					System.out.println("\ndraw");
 					return;
 				}else if(input[0].equals("resign")) {
 					if(turn==Team.WHITE) {
-						System.out.println("Black Wins");
-					}else System.out.println("White wins");
+						System.out.println("\nBlack Wins");
+					}else System.out.println("\nWhite wins");
 					return;
 
 				}else {
-					System.out.println("Illegal move, try again \n");
+					System.out.println("Illegal move, try again.");
 					continue;
 				}
 			}
 
 			if(input.length==3) {
 				if(!input[2].equals("draw?") && !( input[2].equals("N") || input[2].equals("B") || input[2].equals("Q") || input[2].equals("R"))) {
-					System.out.println("Illegal move, try again \n");
+					System.out.println("Illegal move, try again.");
 					continue;
 				}
+			}
+			
+			if(input[0].length()!=2 || input[1].length()!=2) {
+				System.out.println("Illegal move, try again.");
+				continue;
 			}
 
 
@@ -72,8 +75,8 @@ public class Chess {
 				if(indx!=-1) {
 					m = white.getMoves().get(indx);
 				}else {
-					System.out.println("Illegal move, try again \n");
-					System.out.println(white.getMoves());
+					System.out.println("Illegal move, try again.");
+//					System.out.println(white.getMoves());
 					continue;
 				}
 			}else {
@@ -81,8 +84,8 @@ public class Chess {
 				if(indx!=-1) {
 					m= black.getMoves().get(indx);
 				}else {
-					System.out.println("Illegal move, try again \n");
-					System.out.println(black.getMoves());
+					System.out.println("Illegal move, try again.");
+//					System.out.println(black.getMoves());
 					continue;
 				}	
 			}
@@ -90,7 +93,7 @@ public class Chess {
 				m.promotion = getPromotion(input[2]);
 			}
 			executeMove(m);
-			
+			System.out.println();
 			gameBoard.printBoard();
 			
 			boolean check = false;

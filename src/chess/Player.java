@@ -122,7 +122,7 @@ public class Player {
 		}else {
 			if(b[next.getRank()][next.getFile()]!=null && b[next.getRank()][next.getFile()].type == PieceType.KING && b[next.getRank()][next.getFile()].team == team) {
 				kingLoc = next;
-				System.out.println(kingLoc);
+//				System.out.println(kingLoc);
 			} else kingLoc = king.curLoc;
 		}
 		int rnk = kingLoc.getRank();
@@ -134,11 +134,11 @@ public class Player {
 			if(b[i][fle]!=null) {
 				if(b[i][fle].team==op) {
 					if(i==rnk+1 && b[i][fle].type==PieceType.KING) {
-						System.out.println(b[i][fle]);
+//						System.out.println(b[i][fle]);
 						return true;
 					}
 					if(b[i][fle].type==PieceType.QUEEN||b[i][fle].type==PieceType.ROOK) {
-						System.out.println(b[i][fle]);
+//						System.out.println(b[i][fle]);
 						return true;
 					}
 				}else break; //same team
@@ -150,11 +150,11 @@ public class Player {
 			if(b[i][fle]!=null) {
 				if(b[i][fle].team==op) {
 					if(i==rnk-1 && b[i][fle].type==PieceType.KING) {
-						System.out.println(b[i][fle]);
+//						System.out.println(b[i][fle]);
 						return true;
 					}
 					if(b[i][fle].type==PieceType.QUEEN||b[i][fle].type==PieceType.ROOK) {
-						System.out.println(b[i][fle]);
+//						System.out.println(b[i][fle]);
 						return true;
 					}
 				}else break; //same team
@@ -165,11 +165,11 @@ public class Player {
 			if(b[rnk][i]!=null) {
 				if(b[rnk][i].team==op) {
 					if(i==fle+1 && b[rnk][i].type==PieceType.KING) {
-						System.out.println(b[rnk][i]);
+//						System.out.println(b[rnk][i]);
 						return true;
 					}
 					if(b[rnk][i].type==PieceType.QUEEN||b[rnk][i].type == PieceType.ROOK) {
-						System.out.println(b[rnk][i]);
+//						System.out.println(b[rnk][i]);
 						return true;
 					}
 					
@@ -181,11 +181,11 @@ public class Player {
 			if(b[rnk][i]!=null) {
 				if(b[rnk][i].team==op) {
 					if(i==fle-1 && b[rnk][i].type==PieceType.KING) {
-						System.out.println(b[rnk][i]);
+//						System.out.println(b[rnk][i]);
 						return true;
 					}
 					if(b[rnk][i].type==PieceType.QUEEN||b[rnk][i].type == PieceType.ROOK) {
-						System.out.println(b[rnk][i]);
+//						System.out.println(b[rnk][i]);
 						return true;
 					}
 					
@@ -199,11 +199,11 @@ public class Player {
 			if(b[i][j]!=null) {
 				if(b[i][j].team==op) {
 					if(i==rnk+1 && j == fle+1 && b[i][j].type==PieceType.KING) {
-						System.out.println(b[i][j]);
+//						System.out.println(b[i][j]);
 						return true;
 					}
 					if(b[i][j].type==PieceType.QUEEN||b[i][j].type==PieceType.BISHOP) {
-						System.out.println(b[i][j]);
+//						System.out.println(b[i][j]);
 						return true;
 					}
 				}else break;
@@ -214,11 +214,11 @@ public class Player {
 			if(b[i][j]!=null) {
 				if(b[i][j].team==op) {
 					if(i==rnk+1 && j == fle-1 && b[i][j].type==PieceType.KING) {
-						System.out.println(b[i][j]);
+//						System.out.println(b[i][j]);
 						return true;
 					}
 					if(b[i][j].type==PieceType.QUEEN||b[i][j].type==PieceType.BISHOP) {
-						System.out.println(b[i][j]);
+//						System.out.println(b[i][j]);
 						return true;
 					}
 				}else break;
@@ -229,11 +229,11 @@ public class Player {
 			if(b[i][j]!=null) {
 				if(b[i][j].team==op) {
 					if(i==rnk-1 && j == fle+1 && b[i][j].type==PieceType.KING) {
-						System.out.println(b[i][j]);
+//						System.out.println(b[i][j]);
 						return true;
 					}
 					if(b[i][j].type==PieceType.QUEEN||b[i][j].type==PieceType.BISHOP) {
-						System.out.println(b[i][j]);
+//						System.out.println(b[i][j]);
 						return true;
 					}
 				}else break;
@@ -244,11 +244,11 @@ public class Player {
 			if(b[i][j]!=null) {
 				if(b[i][j].team==op) {
 					if(i==rnk-1 && j == fle-1 && b[i][j].type==PieceType.KING) {
-						System.out.println(b[i][j]);
+//						System.out.println(b[i][j]);
 						return true;
 					}
 					if(b[i][j].type==PieceType.QUEEN||b[i][j].type==PieceType.BISHOP) {
-						System.out.println(b[i][j]);
+//						System.out.println(b[i][j]);
 						return true;
 					}
 				}else break;

@@ -14,7 +14,6 @@ public class Chess {
 	private static Board gameBoard;
 	private static Player white;
 	private static Player black;
-	private static boolean drawAsked;
 
 
 	public static void main(String [] args) throws IOException {
@@ -206,7 +205,6 @@ public class Chess {
 
 	private static void initGame() {
 		gameBoard  = new Board();
-		drawAsked = false;
 		King whiteKing =  new King (Team.WHITE, new Location("e1"));
 		gameBoard.board[whiteKing.getRank()][whiteKing.getFile()] = whiteKing;
 		King blackKing = new King(Team.BLACK, new Location ("e8"));

@@ -92,4 +92,11 @@ public class Knight extends Piece {
 		return moves;
 	}
 
+	@Override
+	public Piece clone() {
+		Knight k = new Knight(team, curLoc);
+		k.hasMoved = hasMoved;
+		return k;
+	}
+
 }

@@ -66,4 +66,11 @@ public class Bishop extends Piece {
 		return moves;
 	}
 
+	@Override
+	public Piece clone() {
+		Bishop b = new Bishop(team, curLoc);
+		b.hasMoved = hasMoved;
+		return b;
+	}
+
 }

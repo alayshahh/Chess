@@ -80,6 +80,13 @@ public class Queen extends Piece {
 				moves.add(new Move(curLoc, new Location(rank, file+1)));
 			}
 		}
-		return moves;
+		return new ArrayList<Move>();
+	}
+
+	@Override
+	public Piece clone() {
+		Queen q = new Queen (team, curLoc);
+		q.hasMoved = hasMoved;
+		return q;
 	}
 }

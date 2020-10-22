@@ -100,5 +100,12 @@ public class King extends Piece {
 		return m;
 	}
 
+	@Override
+	public Piece clone() {
+		King q = new King(team, curLoc);
+		q.hasMoved = hasMoved;
+		return q;
+	}
+
 
 }

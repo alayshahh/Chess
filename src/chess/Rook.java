@@ -58,5 +58,12 @@ public class Rook extends Piece{
 		}
 		return moves;
 	}
+
+	@Override
+	public Piece clone() {
+		Rook r = new Rook (team, curLoc);
+		r.hasMoved = hasMoved;
+		return r;
+	}
 }
 

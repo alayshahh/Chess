@@ -24,7 +24,6 @@ public class Knight extends Piece {
 	public List<Move> allPossibleMoves(Board gameBoard) {
 		// TODO Auto-generated method stub
 		List<Move> moves = new ArrayList<>();
-//		return moves;
 		Piece [] [] board = gameBoard.board;
 		Team opponent;
 		if(team == Team.WHITE) {

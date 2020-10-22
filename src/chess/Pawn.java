@@ -64,7 +64,7 @@ public class Pawn extends Piece {
 		//enPassant
 		if(rnk==3) {
 			if(fle!=0) {
-				if(board[3][fle-1]!=null&&board[3][fle-1].type==PieceType.PAWN&&board[4][fle-1].team==Team.WHITE) {
+				if(board[3][fle-1]!=null&&board[3][fle-1].type==PieceType.PAWN&&board[3][fle-1].team==Team.WHITE) {
 					Pawn p = (Pawn)board[3][fle-1];
 					if(p.lastMoveDouble) {
 						moves.add(new Move(curLoc,new Location(2,fle-1), p.curLoc)); //enPassant move
@@ -72,7 +72,7 @@ public class Pawn extends Piece {
 				}
 			}
 			if(fle!=7) {
-				if(board[3][fle+1]!=null&&board[3][fle+1].type==PieceType.PAWN&&board[4][fle-1].team==Team.WHITE) {
+				if(board[3][fle+1]!=null&&board[3][fle+1].type==PieceType.PAWN&&board[3][fle+1].team==Team.WHITE) {
 					Pawn p = (Pawn)board[3][fle+1];
 					if(p.lastMoveDouble) {
 						moves.add(new Move(curLoc,new Location(2,fle+1), p.curLoc)); //enPassant move
@@ -125,7 +125,7 @@ public class Pawn extends Piece {
 				}
 			}
 			if(fle!=7) {
-				if(board[4][fle+1]!=null&&board[4][fle+1].type==PieceType.PAWN&&board[4][fle-1].team==Team.BLACK) {
+				if(board[4][fle+1]!=null&&board[4][fle+1].type==PieceType.PAWN&&board[4][fle+1].team==Team.BLACK) {
 					Pawn p = (Pawn)board[4][fle+1];
 					if(p.lastMoveDouble) {
 						moves.add(new Move(curLoc,new Location(5,fle+1), p.curLoc)); //enPassant move
@@ -138,6 +138,15 @@ public class Pawn extends Piece {
 //		}
 
 		return moves;
+	}
+
+
+	@Override
+	public Piece clone() {
+		Pawn p = new Pawn(team, curLoc);
+		p.hasMoved = hasMoved;
+		p.lastMoveDouble = lastMoveDouble;
+		return p;
 	}
 
 	

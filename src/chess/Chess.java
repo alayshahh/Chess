@@ -42,7 +42,8 @@ public class Chess {
 			}
 
 			if(input.length==1) { //can be draw confirmation or resign
-				if(drawAsked && input[0].equals("draw")){
+				if(input[0].equals("draw")){
+					System.out.println("draw");
 					return;
 				}else if(input[0].equals("resign")) {
 					if(turn==Team.WHITE) {
@@ -56,16 +57,10 @@ public class Chess {
 				}
 			}
 
-			drawAsked = false;
-
 			if(input.length==3) {
-				if(input[2].equals("draw?")) {
-					drawAsked = true;
-				}else {
-					if(!(input[2].length()==1 && ( input[2].equals("N") || input[2].equals("B") || input[2].equals("Q") || input[2].equals("R")))){
-						System.out.println("Illegal move, try again \n");
-						continue;
-					}
+				if(!input[2].equals("draw?") && !( input[2].equals("N") || input[2].equals("B") || input[2].equals("Q") || input[2].equals("R"))) {
+					System.out.println("Illegal move, try again \n");
+					continue;
 				}
 			}
 
@@ -79,6 +74,7 @@ public class Chess {
 					m = white.getMoves().get(indx);
 				}else {
 					System.out.println("Illegal move, try again \n");
+					System.out.println(white.getMoves());
 					continue;
 				}
 			}else {
@@ -87,22 +83,103 @@ public class Chess {
 					m= black.getMoves().get(indx);
 				}else {
 					System.out.println("Illegal move, try again \n");
+					System.out.println(black.getMoves());
 					continue;
 				}	
 			}
 			if(m.type==MoveType.PROMOTION && input.length==3) {
 				m.promotion = getPromotion(input[2]);
 			}
-
-			//if the move is valid execute the move
+			executeMove(m);
 			
-
-
-
-
+			gameBoard.printBoard();
+			
+			boolean check = false;
+			boolean checkMate =  false;
+			
+			if(turn == Team.WHITE) {
+				black.getPieces(gameBoard);
+				black.getValidMoves(gameBoard);
+				check = black.inCheck(gameBoard.board, null);
+				checkMate = black.getMoves().isEmpty();
+			}else {
+				white.getPieces(gameBoard);
+				white.getValidMoves(gameBoard);
+				check = white.inCheck(gameBoard.board, null);
+				checkMate = white.getMoves().isEmpty();
+			}
+		
+			if(checkMate) {
+				System.out.println("Checkmate \n");
+				System.out.println(turn+" Wins");
+				return;
+			}
+			if(check) {
+				System.out.println("Check \n");
+			}
+			
+			if(turn==Team.WHITE) {
+				turn = Team.BLACK;
+			}else turn = Team.WHITE;
 		}
 
 		//implement rest
+	}
+	
+	
+	private static void executeMove(Move m) {
+		
+		//change location field of peice
+		
+		gameBoard.board[m.cur.getRank()][m.cur.getFile()].curLoc = m.next;
+		gameBoard.board[m.cur.getRank()][m.cur.getFile()].hasMoved = true;
+		//change location of Piece on Board
+		gameBoard.board[m.next.getRank()][m.next.getFile()] = gameBoard.board[m.cur.getRank()][m.cur.getFile()];
+		gameBoard.board[m.cur.getRank()][m.cur.getFile()] = null;
+		
+		if(m.type==MoveType.ENPASSANT) { 
+			//remove captured piece
+			gameBoard.board[m.other.cur.getRank()][m.other.cur.getFile()] = null; 
+		}
+		if(m.type==MoveType.CASTLING) {
+			
+			//set rook location
+			gameBoard.board[m.other.cur.getRank()][m.other.cur.getFile()].hasMoved = true;
+			gameBoard.board[m.other.cur.getRank()][m.other.cur.getFile()].curLoc = m.other.next;
+			//move rook
+			gameBoard.board[m.other.next.getRank()][m.other.next.getFile()]= gameBoard.board[m.other.cur.getRank()][m.other.cur.getFile()];
+			gameBoard.board[m.other.cur.getRank()][m.other.cur.getFile()] = null;
+		}
+		
+		if (m.type==MoveType.PROMOTION) {
+			Team t = gameBoard.board[m.next.getRank()][m.next.getFile()].team;
+			Piece p;
+			switch(m.promotion){
+			case BISHOP:
+				p = new Bishop(t, m.next);
+				break;
+			case KNIGHT:
+				p = new Knight(t, m.next);
+				break;
+			case QUEEN:
+				p = new Queen(t, m.next);
+				break;
+			case ROOK:
+				p = new Rook(t, m.next);
+				break;
+			default:
+				p = new Queen(t, m.next);
+					
+			}
+			p.hasMoved = true;
+			gameBoard.board[m.next.getRank()][m.next.getFile()] = p;
+		}
+		if(m.type == MoveType.DOUBLEMOVE) {
+			Pawn p = (Pawn) gameBoard.board[m.next.getRank()][m.next.getFile()];
+			p.lastMoveDouble = true;
+			gameBoard.board[m.next.getRank()][m.next.getFile()] = p;
+		}
+		
 	}
 
 

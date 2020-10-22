@@ -30,57 +30,97 @@ public class Queen extends Piece {
 		if(team == Team.WHITE) {
 			opponent = Team.BLACK;
 		}else opponent = Team.WHITE;
-		int rank = getRank();
-		int file = getFile();
-		boolean up = rank+1<8;
-		boolean down = rank-1 > -1;
-		boolean left = file -1> -1;
-		boolean right = file+1< 8;
-		if (up) {
-			if(left) {
-				if(board[rank+1][file-1]==null||board[rank+1][file-1].team==opponent) { //upright
-					moves.add(new Move(curLoc, new Location(rank+1, file-1)));
+		int rnk = getRank();
+		int fle = getFile();
+		//up right
+		for( int i = rnk+1, j = fle +1; i<8 && j<8; i++, j++) {  
+			if(board[i][j]==null) {
+				moves.add(new Move(curLoc, new Location(i,j)));
+			}else {
+				if(board[i][j].team==opponent) {
+					moves.add(new Move(curLoc, new Location(i,j)));
 				}
-			}
-			if (up) {
-				if(board[rank+1][file]==null||board[rank+1][file].team==opponent) { //up
-					moves.add(new Move(curLoc, new Location(rank+1, file)));
-				}
-			}
-			if(right) {
-				if(board[rank+1][file+1]==null||board[rank+1][file+1].team==opponent) { //upleft
-					moves.add(new Move(curLoc, new Location(rank+1, file+1)));
-				}
+				break;
 			}
 		}
-		if (down) {
-			if(left) {
-				if(board[rank-1][file-1]==null||board[rank-1][file-1].team==opponent) { //down right
-					moves.add(new Move(curLoc, new Location(rank-1, file-1)));
+		//up left
+		for( int i = rnk+1, j = fle -1; i<8 && j>-1; i++, j--) {
+			if(board[i][j]==null) {
+				moves.add(new Move(curLoc, new Location(i,j)));
+			}else {
+				if(board[i][j].team==opponent) {
+					moves.add(new Move(curLoc, new Location(i,j)));
 				}
-			}
-			if (down) {
-				if(board[rank-1][file]==null||board[rank-1][file].team==opponent) { //down
-					moves.add(new Move(curLoc, new Location(rank-1, file)));
-				}
-			}
-			if(right) {
-				if(board[rank-1][file+1]==null||board[rank-1][file+1].team==opponent) { //down left
-					moves.add(new Move(curLoc, new Location(rank-1, file+1)));
-				}
+				break;
 			}
 		}
-		if(left) {
-			if(board[rank][file-1]==null||board[rank][file-1].team==opponent) { // left
-				moves.add(new Move(curLoc, new Location(rank, file-1)));
+		//down right
+		for( int i = rnk-1, j = fle +1; i>-1 && j<8; i--, j++) {
+			if(board[i][j]==null) {
+				moves.add(new Move(curLoc, new Location(i,j)));
+			}else {
+				if(board[i][j].team==opponent) {
+					moves.add(new Move(curLoc, new Location(i,j)));
+				}
+				break;
 			}
 		}
-		if(right) {
-			if(board[rank][file+1]==null||board[rank][file+1].team==opponent) { // right
-				moves.add(new Move(curLoc, new Location(rank, file+1)));
+		//check down left
+		for( int i = rnk-1, j = fle -1; i>-1 && j>-1; i--, j--) {
+			if(board[i][j]==null) {
+				moves.add(new Move(curLoc, new Location(i,j)));
+			}else {
+				if(board[i][j].team==opponent) {
+					moves.add(new Move(curLoc, new Location(i,j)));
+				}
+				break;
 			}
 		}
-		return new ArrayList<Move>();
+
+		for( int i = rnk+1; i<8; i++ ) { //moving up
+			if(board[i][fle]==null) {
+				moves.add(new Move(curLoc, new Location(i, fle)));
+			}else {
+				if(board[i][fle].team==opponent) {
+					moves.add(new Move(curLoc, new Location(i, fle)));
+				}
+				break;
+			}
+		}
+		for( int i = rnk-1; i>-1; i-- ) { //moving down
+			if(board[i][fle]==null) {
+				moves.add(new Move(curLoc, new Location(i, fle)));
+			}else {
+				if(board[i][fle].team==opponent) {
+					moves.add(new Move(curLoc, new Location(i, fle)));
+				}
+				break;
+			}
+		}
+		
+		for ( int i = fle+1; i>8; i++){ //moving right
+			if( board[rnk][i]==null) {
+				moves.add(new Move( curLoc, new Location(rnk,i)));
+			}else {
+				if(board[rnk][i].team==opponent) {
+					moves.add(new Move( curLoc, new Location(rnk,i)));
+				}
+				break;
+			}
+		}
+		for ( int i = fle-1; i<-1; i--){ //moving left
+			if( board[rnk][i]==null) {
+				moves.add(new Move( curLoc, new Location(rnk,i)));
+			}else {
+				if(board[rnk][i].team==opponent) {
+					moves.add(new Move( curLoc, new Location(rnk,i)));
+				}
+				break;
+			}
+		}
+		
+		
+		return moves;
 	}
 
 	@Override

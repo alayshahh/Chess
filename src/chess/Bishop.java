@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
-*@author Alay Shah & Anshika Khare
-*/
+ *@author Alay Shah & Anshika Khare
+ */
 public class Bishop extends Piece {
 
-	
-	
+
+
 	public Bishop(Team team, Location curLoc) {
 		super(PieceType.BISHOP, team, curLoc);
 		// TODO Auto-generated constructor stub
@@ -33,36 +33,54 @@ public class Bishop extends Piece {
 		if(team == Team.WHITE) {
 			opponent = Team.BLACK;
 		}else opponent = Team.WHITE;
-		int rank = getRank();
-		int file = getFile();
-		boolean up = rank+1<8;
-		boolean down = rank-1 > -1;
-		boolean left = file -1> -1;
-		boolean right = file+1< 8;
-		if (up) {
-			if(left) {
-				if(board[rank+1][file-1]==null||board[rank+1][file-1].team==opponent) { //upright
-					moves.add(new Move(curLoc, new Location(rank+1, file-1)));
+		int rnk = getRank();
+		int fle = getFile();
+
+		//up right
+		for( int i = rnk+1, j = fle +1; i<8 && j<8; i++, j++) {  
+			if(board[i][j]==null) {
+				moves.add(new Move(curLoc, new Location(i,j)));
+			}else {
+				if(board[i][j].team==opponent) {
+					moves.add(new Move(curLoc, new Location(i,j)));
 				}
-			}
-			if(right) {
-				if(board[rank+1][file+1]==null||board[rank+1][file+1].team==opponent) { //upleft
-					moves.add(new Move(curLoc, new Location(rank+1, file+1)));
-				}
+				break;
 			}
 		}
-		if (down) {
-			if(left) {
-				if(board[rank-1][file-1]==null||board[rank-1][file-1].team==opponent) { //down right
-					moves.add(new Move(curLoc, new Location(rank-1, file-1)));
+		//up left
+		for( int i = rnk+1, j = fle -1; i<8 && j>-1; i++, j--) {
+			if(board[i][j]==null) {
+				moves.add(new Move(curLoc, new Location(i,j)));
+			}else {
+				if(board[i][j].team==opponent) {
+					moves.add(new Move(curLoc, new Location(i,j)));
 				}
-			}
-			if(right) {
-				if(board[rank-1][file+1]==null||board[rank-1][file+1].team==opponent) { //down left
-					moves.add(new Move(curLoc, new Location(rank-1, file+1)));
-				}
+				break;
 			}
 		}
+		//down right
+		for( int i = rnk-1, j = fle +1; i>-1 && j<8; i--, j++) {
+			if(board[i][j]==null) {
+				moves.add(new Move(curLoc, new Location(i,j)));
+			}else {
+				if(board[i][j].team==opponent) {
+					moves.add(new Move(curLoc, new Location(i,j)));
+				}
+				break;
+			}
+		}
+		//check down left
+		for( int i = rnk-1, j = fle -1; i>-1 && j>-1; i--, j--) {
+			if(board[i][j]==null) {
+				moves.add(new Move(curLoc, new Location(i,j)));
+			}else {
+				if(board[i][j].team==opponent) {
+					moves.add(new Move(curLoc, new Location(i,j)));
+				}
+				break;
+			}
+		}
+
 		return moves;
 	}
 

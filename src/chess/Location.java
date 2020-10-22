@@ -10,7 +10,8 @@ public class Location {
 	
 	
 	/**
-	 * @param loc
+	 * Creates new Location object based on a string in the format File(letter)Rank(number)
+	 * @param loc format File(letter)Rank(number)
 	 */
 	public Location(String loc) {
 		int f = loc.charAt(0);
@@ -19,6 +20,11 @@ public class Location {
 		this.rank=r-49;
 	}
 	
+	/**
+	 * Creates new Location object using given coordinates
+	 * @param rank row of the Piece in array
+	 * @param file column of Piece in array
+	 */
 	public Location (int rank, int file) {
 		this.rank = rank;
 		this.file =file;
@@ -39,6 +45,7 @@ public class Location {
 	}
 	
 	
+	@Override
 	public boolean equals (Object o) {
 		if( !(o instanceof Location)|| o==null) {
 			return false;
@@ -48,10 +55,15 @@ public class Location {
 	}
 	
 	
+	/**
+	 * Returns the i,j coordinates that the Location references
+	 * 
+	 */
 	public void locationOnBoard() {
 		System.out.println(rank+ " "+ file);
 	}
 	
+	@Override
 	public String toString() {
 		char x = (char)(file +97);
 		return x+" " + (rank+1);

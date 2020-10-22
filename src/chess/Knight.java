@@ -10,13 +10,18 @@ import java.util.List;
 public class Knight extends Piece {
 	
 	
+	/**
+	 * Creates new knight, utilizes Piece's constructor.
+	 * @param team Team of the piece
+	 * @param curLoc Current Location of the Piece
+	 * @see Piece
+	 */
 	public Knight(Team team, Location curLoc) {
 		super(PieceType.KNIGHT, team, curLoc);
 	}
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return team == Team.BLACK ? "bN":"wN" ;
 	}
 

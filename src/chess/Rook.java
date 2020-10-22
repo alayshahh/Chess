@@ -10,6 +10,14 @@ import java.util.List;
 public class Rook extends Piece{
 	
 
+	/**
+	 * Creates new instance of Rook. Uses Piece super constructor.
+	 * @param team Team of Rook
+	 * @param curLoc Curretn Location of rook om board
+	 * @see Piece
+	 * @see Location
+	 * 
+	 */
 	public Rook(Team team, Location curLoc) {
 		super(PieceType.ROOK, team, curLoc);
 		// TODO Auto-generated constructor stub

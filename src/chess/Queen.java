@@ -10,9 +10,15 @@ import java.util.List;
 
 public class Queen extends Piece {
 
+	/**
+	 * Creates instance of Queen, utilizes Piece super constructor
+	 * @param team Team of Queen
+	 * @param curLoc Current Location of Queen
+	 * @see Piece
+	 * @see Location
+	 */
 	public Queen(Team team, Location curLoc) {
 		super(PieceType.QUEEN, team, curLoc);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

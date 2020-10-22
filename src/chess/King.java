@@ -9,6 +9,12 @@ import java.util.List;
 
 public class King extends Piece {
 	
+	/**
+	 * Creates new King piece. Takes in the team and current location, uses Piece's constructor. 
+	 * @param team Team of the piece
+	 * @param curLoc Current Location of the Piece
+	 * @see Piece
+	 */
 	public King(Team team, Location curLoc) {
 		super(PieceType.KING, team, curLoc);
 	}
@@ -84,6 +90,11 @@ public class King extends Piece {
 	}
 	
 	
+	/**
+	 * If the king has not moved, this method will be called to check if the castling move is possible. If possible, it will return a List of all possible castling moves.
+	 * @param board 8 by 8 Piece matrix that reflects current board state.
+	 * @return
+	 */
 	private List<Move> castling(Piece [][] board){
 		List<Move> m = new ArrayList<>();
 		int rnk = getRank();

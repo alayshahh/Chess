@@ -7,12 +7,17 @@ package chess;
 
 public enum Team {
 	WHITE("White"), BLACK("Black");
-	private String name;
-	private Team(String name) {
-		this.name = name;
+	private String teamName;
+	
+	
+	/**
+	 * @param name Gives the value a teamName attribute
+	 */
+	private Team(String teamName) {
+		this.teamName = teamName;
 	}
 	
 	public String toString() {
-		return name;
+		return teamName;
 	}
 }

@@ -7,14 +7,16 @@ public class Board {
 	public Piece[][] board;
 	
 	
+	/**
+	 * Creates new Board object with an empty 8 x 8 piece array.
+	 */
 	public Board() {
 		board = new Piece [8][8];
 	}
 	
-	public Board(Piece [][] board) {
-		this.board = board;
-	}
-	
+	/**
+	 * Prints out the piece array, filling the empty square with the corresponding color.
+	 */
 	public void printBoard() {
 		for( int i = 7; i>=0; i--) {
 			for( int j = 0 ; j<=8; j++) {

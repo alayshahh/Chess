@@ -10,15 +10,17 @@ public class Bishop extends Piece {
 
 
 
+	/**
+	 * Creates new Bishop. Calls Piece constructor to set fields
+	  * @param team Team of the piece
+	 * @param curLoc Current Location of the Piece
+	 * @see Piece
+	 */
 	public Bishop(Team team, Location curLoc) {
 		super(PieceType.BISHOP, team, curLoc);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	/**
-	 * @return String
-	 */
 	public String toString() {
 		// TODO Auto-generated method stub
 		return team == Team.BLACK ? "bB" : "wB";

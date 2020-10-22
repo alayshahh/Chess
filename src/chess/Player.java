@@ -10,12 +10,7 @@ import java.util.List;
 public class Player {
 	
 
-	/**
-	 * @return
-	 */
-	public Team getTeam() {
-		return team;
-	}
+	
 
 	private final Team team;
 	public King king;
@@ -24,16 +19,42 @@ public class Player {
 	private List<Move> validMoves = new ArrayList<>();
 	
 	
+	/**
+	 * @return Team of Player (BLACK or WHITE)
+	 * @see Team
+	 */
+	public Team getTeam() {
+		return team;
+	}
+	
+	/**
+	 * @param team Team
+	 * @param king King Piece that belongs to player
+	 * @see King
+	 * @see Team
+	 */
 	public Player(Team team, King king) {
 		this.team = team;
 		this.king = king;
 	}
 	
+	/**
+	 * @return List of all valid moves that can be executed by the player
+	 * @see Move
+	 */
 	public List<Move> getMoves(){
 		return validMoves;
 		
 	}
 	
+	
+	/**
+	 * Sets the List of Possible moves, by going through list of pieces for the player and getting allPossibleMoves
+	 * @param b Game Board
+	 * @see Piece
+	 * @see Piece#allPossibleMoves(Board)
+	 * @see #pieces
+	 */
 	private void getPossibleMoves(Board b) {
 		possibleMoves.clear();
 		for(Piece p: pieces) {
@@ -42,7 +63,12 @@ public class Player {
 	}
 	
 	/**
-	 * @param b
+	 * Filters list of possible Moves and reduces it down to the moves that do not endager the king.
+	 * @param b Board
+	 * @see Move
+	 * @see #possibleMoves
+	 * @see #validMoves
+	 * @see #inCheck(Piece[][], Location)
 	 * 
 	 */
 	public void getValidMoves(Board b) {
@@ -78,7 +104,11 @@ public class Player {
 	}
 	
 	/**
-	 * @param b
+	 * Gets all pieces from game board
+	 * @param b Board
+	 * @see Board
+	 * @see Piece
+	 * 
 	 */
 	public void getPieces(Board b){
 
@@ -109,9 +139,14 @@ public class Player {
 	}
 	
 	/**
-	 * @param b
-	 * @param m takes in a move
-	 * @return if King is in check because of the move, then it will return true.
+	 * Checks if king is in danger. If a move can put king in check or king is still in check after the move, it is invalid.
+	 * @param b Board
+	 * @param m takes in a Move
+	 * @return True if king is in danger
+	 * @see Board
+	 * @see #king
+	 * @see King
+	 * @see Move
 	 */
 	public boolean inCheck(Piece[][] b, Location next) {
 		Team op;

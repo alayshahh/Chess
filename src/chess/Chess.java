@@ -7,6 +7,7 @@ import java.util.Scanner;
  * @author Alay Shah & Anshika Khare
  */
 
+
 public class Chess {
 
 	static Scanner sc = new Scanner(System.in);
@@ -16,7 +17,12 @@ public class Chess {
 	private static Player black;
 
 
-	public static void main(String [] args) throws IOException {
+	
+	/**
+	 * Driver for the chess game. Delegates moves to the appropriate player, checks if moves are invalid, and ends game on check mate, draw or a resignation.
+	 * @param args
+	 */
+	public static void main(String [] args) {
 		initGame();//put all pieces in place and populate player's list of pieces with their pieces
 
 		gameBoard.printBoard(); //prints out the board as it is
@@ -129,6 +135,10 @@ public class Chess {
 	}
 	
 	
+	/**
+	 * Changes the game board to account for the move that is being made. Performs corresponding actions for en passant, a double move (pawn), castling and promotion.
+	 * @param m Validated move that needs to be made
+	 */
 	private static void executeMove(Move m) {
 		
 		//change location field of peice
@@ -185,12 +195,20 @@ public class Chess {
 	}
 
 
-	private static String [] getMove() throws IOException{
+	/**
+	 * Reads from standard input.
+	 * @return Inputed string that is split based on the indices of the " ".
+	 */
+	private static String [] getMove(){
 		String input  = sc.nextLine().trim();
 		String [] inputs  = input.split(" ");
 		return inputs;
 	}
 
+	/**
+	 * @param s Takes in String specifying the promotion.
+	 * @return PieceType based on the wanted promotion for the pawn.
+	 */
 	private static PieceType getPromotion(String s) {
 		switch (s) {
 		case "Q":
@@ -206,6 +224,9 @@ public class Chess {
 		}
 	}
 
+	/**
+	 * Initializes the chess board and the players. The Board is populated with the appropriate pieces and the player's list of pieces is populated with respective pieces.
+	 */
 	private static void initGame() {
 		gameBoard  = new Board();
 		King whiteKing =  new King (Team.WHITE, new Location("e1"));

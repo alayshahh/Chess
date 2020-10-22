@@ -13,6 +13,12 @@ public class Pawn extends Piece {
 	
 	boolean lastMoveDouble;
 	
+	/**
+	 * Creates new Pawn. Utilizes Piece super constructor.
+	 * @param team Team of the piece
+	 * @param curLoc Current Location of the Piece
+	 * @see Piece
+	 */
 	public Pawn(Team team, Location curLoc) {
 		super(PieceType.PAWN, team, curLoc);
 		lastMoveDouble = false;
@@ -33,6 +39,12 @@ public class Pawn extends Piece {
 		}else return blackPawn(gameBoard.board);
 	}
 	
+	/**
+	 * Generates List of moves possible by a Black pawn.
+	 * @param board 8 by 8 Piece matrix reflecting current board state.
+	 * @return List of possible Move that can be performed by Pawn
+	 * @see Move
+	 */
 	private List<Move> blackPawn(Piece [] [] board){
 		List<Move> moves = new ArrayList<>();
 		int rnk = getRank();
@@ -87,6 +99,14 @@ public class Pawn extends Piece {
 
 		return moves;
 	}
+	
+	
+	/**
+	 * Generates list of moves possible by a white pawn
+	 * @param board
+	 * @return List of Move that can be performed by Pawn
+	 * @see Move
+	 */
 	private List<Move> whitePawn(Piece [] [] board){
 		List<Move> moves = new ArrayList<>();
 		int rnk = getRank();

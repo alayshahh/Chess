@@ -6,7 +6,14 @@ package chess;
 */
 
 public enum Team {
-	WHITE("White"), BLACK("Black");
+	/**
+	 * White Team
+	 */
+	WHITE("White"), 
+	/**
+	 * Black Team
+	 */
+	BLACK("Black");
 	private String teamName;
 	
 	

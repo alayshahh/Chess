@@ -7,5 +7,28 @@ package chess;
  */
 
 public enum PieceType {
-	PAWN, ROOK, KNIGHT,BISHOP, QUEEN, KING
+	/**
+	 *Pawn 
+	 */
+	PAWN, 
+	/**
+	 * Rook
+	 */
+	ROOK, 
+	/**
+	 * Knight
+	 */
+	KNIGHT,
+	/**
+	 * Bishop
+	 */
+	BISHOP,
+	/**
+	 * Queen
+	 */
+	QUEEN, 
+	/**
+	 * King
+	 */
+	KING
 }

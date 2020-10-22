@@ -5,10 +5,47 @@ package chess;
 */
 
 public class Move {
+	
+	
+	
+	/**
+	 * Current Location of the Piece on the board
+	 * @see Piece
+	 * @see Board
+	 * @see Location
+	 */
 	Location cur;
+	
+	
+	/**
+	 * Desired next location of piece on Board
+	 * @see Piece
+	 * @see Board
+	 * @see Location
+	 */
 	Location next;
+	
+	
+	/**
+	 * Promotion type of pawn, if applicable.
+	 * @see Pawn
+	 * @see PieceType
+	 */
 	PieceType promotion;
+	
+	
+	/**
+	 * The type of Move the move is
+	 * @see MoveType
+	 */
 	MoveType type;
+	
+	
+	/**
+	 * Reserved for en Passant and Castling moves where a second location or move is associated with the move
+	 * @see King
+	 * @see Pawn
+	 */
 	Move other; // this will be for castling or for enPassant Capture
 	
 	/**

@@ -5,5 +5,31 @@ package chess;
  *
  */
 public enum MoveType {
-	NORMAL, ENPASSANT, CASTLING, PROMOTION, DOUBLEMOVE
+	/**
+	 * Normal Move
+	 */
+	NORMAL,
+	/**
+	 * En Passant Move
+	 * @see Pawn
+	 */
+	ENPASSANT, 
+	
+	/**
+	 * Castling Move 
+	 * @see King
+	 */
+	CASTLING,
+	
+	/**
+	 * Promotion move
+	 * @see Pawn
+	 */
+	PROMOTION,
+	
+	/**
+	 * Double move 
+	 * @see Pawn
+	 */
+	DOUBLEMOVE
 }

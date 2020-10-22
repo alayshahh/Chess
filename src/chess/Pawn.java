@@ -11,6 +11,11 @@ import java.util.List;
 public class Pawn extends Piece {
 	
 	
+	/**
+	 * Is true if the last move is a double move. Will be used to check if an en Passant capture is possible
+	 * @see Move
+	 * @see MoveType
+	 */
 	boolean lastMoveDouble;
 	
 	/**

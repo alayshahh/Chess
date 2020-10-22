@@ -10,10 +10,29 @@ import java.util.Scanner;
 
 public class Chess {
 
+	/**
+	 * Scanner for getting user input from Std.in
+	 * @see Scanner
+	 */
 	static Scanner sc = new Scanner(System.in);
+	
 
+	/**
+	 * Game Board that will be used in game of chess
+	 * @see Board
+	 */
 	private static Board gameBoard;
+	
+	/**
+	 * White team
+	 * @see Player
+	 */
 	private static Player white;
+	
+	/**
+	 * Black team
+	 * @see Player
+	 */
 	private static Player black;
 
 

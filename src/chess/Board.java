@@ -4,6 +4,10 @@ package chess;
  * @author Alay Shah & Anshika Khare
 */
 public class Board {
+	
+	/**
+	 * 2D array of Pieces, represents the actual chess board
+	 */
 	public Piece[][] board;
 	
 	

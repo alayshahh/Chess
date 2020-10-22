@@ -5,7 +5,20 @@ package chess;
 */
 
 public class Location {
+	
+	
+	
+	/**
+	 * The column index of piece on board
+	 * @see Board
+	 * @see Player
+	 */
 	private int file;
+	/**
+	 * The row index of piece on board
+	 * @see Board
+	 * @see Player
+	 */
 	private int rank;
 	
 	

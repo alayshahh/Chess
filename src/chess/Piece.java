@@ -8,10 +8,31 @@ import java.util.*;
 
 public abstract class Piece {
 	
+	/**
+	 * The current location of Piece on the Board. 
+	 * @see Location
+	 * @see Board
+	 */
 	public Location curLoc;
-	//public Location prevLoc;
+	
+	/**
+	 * The type of piece it is.
+	 * @see PieceType
+	 */
 	public PieceType type;
+	
+	/**
+	 * The team the Piece is on.
+	 * @see Team
+	 */
 	public final Team team;
+	
+	/**
+	 * Keeps track if the piece has moved, for castling (King and Rook) and en Passant(Pawn)
+	 * @see King
+	 * @see Pawn
+	 * 
+	 */
 	public boolean hasMoved;
 	
 	/**

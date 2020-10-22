@@ -30,32 +30,53 @@ public class Rook extends Piece{
 		if(team == Team.WHITE) {
 			opponent = Team.BLACK;
 		}else opponent = Team.WHITE;
-		int rank = getRank();
-		int file = getFile();
-		boolean up = rank+1<8;
-		boolean down = rank-1 > -1;
-		boolean left = file -1> -1;
-		boolean right = file+1< 8;
-		if (up) {
-			if(board[rank+1][file]==null||board[rank+1][file].team==opponent) { //up
-				moves.add(new Move(curLoc, new Location(rank+1, file)));
+		int rnk = getRank();
+		int fle = getFile();
+		
+		for( int i = rnk+1; i<8; i++ ) { //moving up
+			if(board[i][fle]==null) {
+				moves.add(new Move(curLoc, new Location(i, fle)));
+			}else {
+				if(board[i][fle].team==opponent) {
+					moves.add(new Move(curLoc, new Location(i, fle)));
+				}
+				break;
 			}
 		}
-		if(left) {
-			if(board[rank][file-1]==null||board[rank][file-1].team==opponent) { // left
-				moves.add(new Move(curLoc, new Location(rank, file-1)));
+		for( int i = rnk-1; i>-1; i-- ) { //moving down
+			if(board[i][fle]==null) {
+				moves.add(new Move(curLoc, new Location(i, fle)));
+			}else {
+				if(board[i][fle].team==opponent) {
+					moves.add(new Move(curLoc, new Location(i, fle)));
+				}
+				break;
 			}
 		}
-		if(right) {
-			if(board[rank][file+1]==null||board[rank][file+1].team==opponent) { // right
-				moves.add(new Move(curLoc, new Location(rank, file+1)));
+		
+		for ( int i = fle+1; i>8; i++){ //moving right
+			if( board[rnk][i]==null) {
+				moves.add(new Move( curLoc, new Location(rnk,i)));
+			}else {
+				if(board[rnk][i].team==opponent) {
+					moves.add(new Move( curLoc, new Location(rnk,i)));
+				}
+				break;
 			}
 		}
-		if (down) {
-			if(board[rank-1][file]==null||board[rank-1][file].team==opponent) { //down
-				moves.add(new Move(curLoc, new Location(rank-1, file)));
+		for ( int i = fle-1; i<-1; i--){ //moving left
+			if( board[rnk][i]==null) {
+				moves.add(new Move( curLoc, new Location(rnk,i)));
+			}else {
+				if(board[rnk][i].team==opponent) {
+					moves.add(new Move( curLoc, new Location(rnk,i)));
+				}
+				break;
 			}
 		}
+		
+		
+		
 		return moves;
 	}
 

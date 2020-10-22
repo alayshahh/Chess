@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *@author Alay Shah & Anshika Khare
+ * @author Alay Shah
+ * @author Anshika Khare
  */
 public class Bishop extends Piece {
 

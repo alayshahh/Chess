@@ -1,7 +1,8 @@
 package chess;
 
 /**
- * @author Alay Shah & Ankisha Khare
+ *  @author Alay Shah
+ * @author Anshika Khare
 */
 
 public class Move {

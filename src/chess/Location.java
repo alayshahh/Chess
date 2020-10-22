@@ -1,7 +1,8 @@
 package chess;
 
 /**
- * @author Alay Shah & Anshika Khare
+ *  @author Alay Shah
+ * @author Anshika Khare
 */
 
 public class Location {

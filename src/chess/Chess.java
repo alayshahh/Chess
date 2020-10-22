@@ -4,7 +4,8 @@ import java.io.IOException;
 import java.util.Scanner;
 
 /**
- * @author Alay Shah & Anshika Khare
+ * @author Alay Shah
+ * @author Anshika Khare
  */
 
 

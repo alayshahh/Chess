@@ -2,7 +2,8 @@ package chess;
 import java.util.*;
 
 /**
- * @author Alay Shah & Anshika Khare
+ * @author Alay Shah
+ * @author Anshika Khare
 
 */
 
@@ -92,7 +93,7 @@ public abstract class Piece {
 	}
 
 	/**
-	 * @param gameBoard
+	 * @param gameBoard the current Board that is being used in the game
 	 * @return List of Moves this will be all possible moves that the piece can make, will not check if it is invalid, i.e doesn't matter if the king will be in check because of this move.
 	 * @see Move
 	 * @see Board

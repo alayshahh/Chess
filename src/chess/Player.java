@@ -18,7 +18,7 @@ public class Player {
 	}
 
 	private final Team team;
-	public final King king;
+	public King king;
 	private List<Piece> pieces;
 	private List<Move> possibleMoves = new ArrayList<>();
 	private List<Move> validMoves = new ArrayList<>();
@@ -48,7 +48,16 @@ public class Player {
 	public void getValidMoves(Board b) {
 		getPossibleMoves(b);
 		for(Move m: possibleMoves) {
-			Piece [][] board = b.board.clone();
+			Piece [][] board = new Piece [8][8];
+			for(int i =0;i<8;i++) {
+				for(int j =0; j<8; j++) {
+					if(b.board[i][j]!=null) {
+						board[i][j] = b.board[i][j].clone();
+					}else {
+						board[i][j]=null;
+					}
+				}
+			}
 			board[m.next.getRank()][m.next.getFile()] = board[m.cur.getRank()][m.cur.getFile()];
 			board[m.cur.getRank()][m.cur.getFile()] = null;
 			
@@ -110,13 +119,13 @@ public class Player {
 		Location kingLoc;
 		if(next==null) {
 			kingLoc = king.curLoc;
+		}else {
+			if(b[next.getRank()][next.getRank()]!=null && b[next.getRank()][next.getRank()].type == PieceType.KING && b[next.getRank()][next.getFile()].team == team) {
+				kingLoc = next;
+			} else kingLoc = king.curLoc;
 		}
-		if(b[next.getRank()][next.getRank()]!=null && b[next.getRank()][next.getRank()].type == PieceType.KING && b[next.getRank()][next.getFile()].team == team) {
-			kingLoc = next;
-		} else kingLoc = king.curLoc;
 		int rnk = kingLoc.getRank();
-		int fle = kingLoc.getRank();
-		
+		int fle = kingLoc.getFile();
 		
 		//check up for rook & Queen && check for king on the first square up
 		for (int i =rnk+1; i<8; i++) {

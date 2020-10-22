@@ -98,7 +98,7 @@ public class Queen extends Piece {
 			}
 		}
 		
-		for ( int i = fle+1; i>8; i++){ //moving right
+		for ( int i = fle+1; i<8; i++){ //moving right
 			if( board[rnk][i]==null) {
 				moves.add(new Move( curLoc, new Location(rnk,i)));
 			}else {
@@ -108,7 +108,7 @@ public class Queen extends Piece {
 				break;
 			}
 		}
-		for ( int i = fle-1; i<-1; i--){ //moving left
+		for ( int i = fle-1; i>-1; i--){ //moving left
 			if( board[rnk][i]==null) {
 				moves.add(new Move( curLoc, new Location(rnk,i)));
 			}else {

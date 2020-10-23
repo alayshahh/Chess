@@ -134,11 +134,13 @@ public class Chess {
 				black.getValidMoves(gameBoard);
 				check = black.inCheck(gameBoard.board, null);
 				checkMate = black.getMoves().isEmpty();
+				System.out.println(black.getMoves());
 			}else {
 				white.getPieces(gameBoard);
 				white.getValidMoves(gameBoard);
 				check = white.inCheck(gameBoard.board, null);
 				checkMate = white.getMoves().isEmpty();
+				System.out.println(white.getMoves());
 			}
 		
 			if(checkMate) {

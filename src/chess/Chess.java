@@ -59,7 +59,11 @@ public class Chess {
 
 			System.out.print(turn+"'s move: ");
 			String [] input = getMove();
-			if(input.length<1||input.length>3) { //empty move or more than 2 spaces in input
+			if(input.length<1||input.length>4) { //empty move or more than 2 spaces in input
+				System.out.println("Illegal move, try again.");
+				continue;
+			}
+			if(input.length==4 && !input[3].equals("draw?")) {
 				System.out.println("Illegal move, try again.");
 				continue;
 			}
@@ -255,16 +259,16 @@ public class Chess {
 		gameBoard.board[blackKing.getRank()][blackKing.getFile()] = blackKing;
 		white  =  new Player(Team.WHITE, whiteKing);
 		black  = new Player (Team.BLACK, blackKing);
-//		Location [] whitePawn = {new Location("a2"),new Location("b2"),new Location("c2"),new Location("d2"),new Location("e2"), new Location("f2"), new Location("g2"), new Location("h2")};
-//		for(Location l : whitePawn) {
-//			Piece p = new Pawn(Team.WHITE, l);
-//			gameBoard.board[p.getRank()][p.getFile()] = p;
-//		}
-//		Location [] blackPawn = {new Location("a7"),new Location("b7"),new Location("c7"),new Location("d7"),new Location("e7"), new Location("f7"), new Location("g7"), new Location("h7")};
-//		for(Location l : blackPawn) {
-//			Piece p = new Pawn(Team.BLACK, l);
-//			gameBoard.board[p.getRank()][p.getFile()] = p;
-//		}
+		Location [] whitePawn = {new Location("a2"),new Location("b2"),new Location("c2"),new Location("d2"),new Location("e2"), new Location("f2"), new Location("g2"), new Location("h2")};
+		for(Location l : whitePawn) {
+			Piece p = new Pawn(Team.WHITE, l);
+			gameBoard.board[p.getRank()][p.getFile()] = p;
+		}
+		Location [] blackPawn = {new Location("a7"),new Location("b7"),new Location("c7"),new Location("d7"),new Location("e7"), new Location("f7"), new Location("g7"), new Location("h7")};
+		for(Location l : blackPawn) {
+			Piece p = new Pawn(Team.BLACK, l);
+			gameBoard.board[p.getRank()][p.getFile()] = p;
+		}
 		Location [] wR = {new Location("h1"), new Location("a1")};
 		Location [] wN = {new Location("g1"), new Location("b1")};
 		Location [] wB = {new Location ("c1"), new Location("f1")};

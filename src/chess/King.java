@@ -104,7 +104,7 @@ public class King extends Piece {
 				m.add(new Move(curLoc, new Location(rnk, 6), new Move(new Location(rnk,7), new Location(rnk,5))));
 			}
 		}
-		if(board[rnk][0]!=null&&board[rnk][0].type==PieceType.ROOK&& !board[rnk][0].hasMoved && board[rnk][7].team==team) {
+		if(board[rnk][0]!=null && board[rnk][0].type==PieceType.ROOK && !board[rnk][0].hasMoved && board[rnk][0].team==team) {
 			if(board[rnk][1]==null&&board[rnk][2]==null&&board[rnk][3]==null) {
 				m.add(new Move(curLoc, new Location(rnk,2), new Move(new Location(rnk,0), new Location(rnk,3))));
 			}

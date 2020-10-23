@@ -75,6 +75,10 @@ public class Player {
 	public void getValidMoves(Board b) {
 		getPossibleMoves(b);
 		for(Move m: possibleMoves) {
+			if(inCheck(b.board,null)&&m.type==MoveType.CASTLING) {
+				continue;
+			}
+			
 			Piece [][] board = new Piece [8][8];
 			for(int i =0;i<8;i++) {
 				for(int j =0; j<8; j++) {
@@ -82,6 +86,31 @@ public class Player {
 						board[i][j] = b.board[i][j].clone();
 					}else {
 						board[i][j]=null;
+					}
+				}
+			}
+			if (m.type==MoveType.CASTLING) {
+				Piece [] [] castlingCheck = new Piece[8][8]; 
+				for(int i =0;i<8;i++) {
+					for(int j =0; j<8; j++) {
+						if(b.board[i][j]!=null) {
+							castlingCheck[i][j] = b.board[i][j].clone();
+						}else {
+							castlingCheck[i][j]=null;
+						}
+					}
+				}
+				if(m.next.getFile() == 6) { //checks if the square the king passes through is under check
+					castlingCheck[m.next.getRank()][m.next.getFile()-1] = castlingCheck[m.cur.getRank()][m.cur.getFile()];
+					castlingCheck[m.cur.getRank()][m.cur.getFile()] = null;
+					if(inCheck(castlingCheck,new Location(m.next.getRank(),m.next.getFile()-1))) {
+						continue;
+					}
+				}else {
+					castlingCheck[m.next.getRank()][m.next.getFile()+1] = castlingCheck[m.cur.getRank()][m.cur.getFile()];
+					castlingCheck[m.cur.getRank()][m.cur.getFile()] = null;
+					if(inCheck(castlingCheck,new Location(m.next.getRank(),m.next.getFile()+1))) {
+						continue;
 					}
 				}
 			}
